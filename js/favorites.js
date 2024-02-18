@@ -1,6 +1,6 @@
 export class GithubUser {
     static search(username) {
-        const endpoint = `https://api.github.com/uses/${username}`
+        const endpoint = `https://api.github.com/users/${username}`
 
         return fetch(endpoint)
             .then(data => data.json())
@@ -23,16 +23,35 @@ export class Favorites {
         this.entries = JSON.parse(localStorage.getItem('@github-favorites:')) || []
     }
 
+    save() {
+        localStorage.setItem('@github-favorites:', JSON.stringify(this.entries))
+    }
+
     async add(username) {
-        const user = await GithubUser.search(username)
+        try {
+            const user = await GithubUser.search(username)
+
+            if (user.login === undefined) {
+                throw new Error('Usuário não encontrado!')
+            }
+
+            this.entries = [user, ...this.entries]
+            this.update()
+            this.save()
+
+
+        } catch (error) {
+            alert(error.message)
+        }
+
     }
 
     delete(user) {
-        const filteredEntries = this.entries.filter(entry =>
-            entry.login !== user.login)
+        const filteredEntries = this.entries.filter(entry => entry.login !== user.login)
 
         this.entries = filteredEntries
         this.update()
+        this.save()
     }
 }
 
@@ -84,9 +103,9 @@ export class FavoritesView extends Favorites {
         const tr = document.createElement('tr')
         tr.innerHTML = `
         <td class="user">
-           <img src="https://github.com/Alves0611.png" alt="">
-           <a href="https://github.com/Alves0611" target="_blank">
-             <p>Gabriel Alves</p>
+           <img src="https://github.com/maykbrito.png" alt="Imagem de maykbrito">
+           <a href="https://github.com/maykbrito" target="_blank">
+             <p>Mayk Brito</p>
              <span>maykbrito</span>
            </a>
          </td>
