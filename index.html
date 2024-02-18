@@ -2,9 +2,18 @@
 <html lang="pt-br">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github Favorites</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@0700;&display=swap" rel="stylesheet">
+
+    <script src="js/main.js" type="module" defer></script>
+
 </head>
 
 <body>
@@ -12,7 +21,7 @@
         <header>
             <h1>Github Favorites</h1>
             <div class="search">
-                <label for="input-search">Usuário do Github</label>
+                <label class="sr-only" for="input-search">Usuário do Github</label>
                 <input id="input-search" type="text" placeholder="Usuário do Github">
                 <button>&plus;</button>
             </div>
@@ -20,49 +29,48 @@
         <table>
             <thead>
                 <tr>
-
-                    <th scope="col">Usuário</th>
-                    <th scope="col">Repositório</th>
-                    <th scope="col">Seguidores</th>
+                    <th>Usuário</th>
+                    <th>Repositórios</th>
+                    <th>Seguidores</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="user">
-                        <img src="https://github.com/alves0611.png" alt="">
-                        <a href="https://github.com/alves0611" target="_blank">
+                        <img src="https://github.com/Alves0611.png" alt="">
+                        <a href="https://github.com/Alves0611" target="_blank">
                             <p>Gabriel Alves</p>
                             <span>Alves0611</span>
                         </a>
                     </td>
                     <td class="repositories">
-                        19
+                        76
                     </td>
                     <td class="followers">
-                        4
+                        9589
                     </td>
                     <td>
-                        <button>&times;</button>
+                        <button class="remove">&times;</button>
                     </td>
                 </tr>
 
                 <tr>
                     <td class="user">
-                        <img src="https://github.com/devGabyAlves.png" alt="">
+                        <img src="https://github.com/devGabyAlves.png" alt="Imagem de maykbrito">
                         <a href="https://github.com/devGabyAlves" target="_blank">
                             <p>Gabrielly Alves</p>
                             <span>devGabyAlves</span>
                         </a>
                     </td>
                     <td class="repositories">
-                        6
+                        48
                     </td>
                     <td class="followers">
-                        14
+                        22503
                     </td>
                     <td>
-                        <button>&times;</button>
+                        <button class="remove">&times;</button>
                     </td>
                 </tr>
             </tbody>
